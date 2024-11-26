@@ -1,32 +1,43 @@
-Vuoi sapere come ho fatto a creare un Oauth con google?? Semplice...
+Come ho creato un sistema di autenticazione OAuth con Google? Ecco come!
 
-Ho creato lo scafolding del progetto.
+Il processo per implementare il login tramite Google OAuth nel mio progetto è stato semplice ma richiede una serie di passaggi precisi. Ecco una panoramica di come l'ho realizzato:
 
-Ho creato e compilato i dati richiesti da google Api Console
-https://console.developers.google.com/
+    Creazione dello scaffolding del progetto:
+    Per prima cosa, ho creato la struttura del progetto utilizzando VS Code, impostando i vari file e le cartelle necessarie. Questo include anche l'integrazione dei file di configurazione per gestire le variabili ambientali.
 
-Alla fine della creazione della web application ho preso il client id e ho creato il file env con queste variabili
-<?php
+    Registrazione nella Google API Console:
+    Ho acceduto alla Google API Console (https://console.developers.google.com/), dove ho creato un nuovo progetto per ottenere le credenziali necessarie all’autenticazione tramite Google. Durante questo processo, ho creato una web application e ho configurato l'URI di reindirizzamento (Redirect URI). Una volta completata la configurazione, ho ottenuto il client ID e il client secret necessari per interagire con l'API di Google.
 
-$google_oauth_client_id = 'codice';
-$google_oauth_client_secret = 'codice';
-$google_oauth_redirect_uri = 'path/google-oauth.php';
-$google_oauth_version = 'v3';
+    Configurazione delle variabili di ambiente:
+    Ho creato un file .env per gestire le variabili sensibili. All'interno di questo file ho inserito le seguenti variabili per configurare l'autenticazione:
 
-Su VsCode ho creato la struttura del progetto con i vari style
+    <?php
+    $google_oauth_client_id = 'TUO_CLIENT_ID';
+    $google_oauth_client_secret = 'TUO_CLIENT_SECRET';
+    $google_oauth_redirect_uri = 'path/google-oauth.php';
+    $google_oauth_version = 'v3';
 
-Ho importato le variabili dal file env e ho aperto la sessione
+    In questo modo, ho centralizzato la configurazione, mantenendo le informazioni sensibili al sicuro e facilmente modificabili.
 
-Ho scritto il codice gestisce l'autenticazione dell'utente tramite Google. Quando l'utente viene reindirizzato alla pagina con un parametro code (fornito da Google dopo l'autenticazione), il codice utilizza questo code per richiedere un access token. Questo token è una chiave temporanea che consente all'app di accedere ai dati dell'utente.
+    Impostazione della struttura del progetto:
+    Ho quindi creato la struttura completa del progetto, includendo le rotte, i controlli, e i file di stile per gestire l’interfaccia utente. Ho importato le variabili dal file .env e ho aperto una sessione PHP per mantenere i dati dell’utente autenticato.
 
-Dopo aver ricevuto il token, il codice invia un'altra richiesta per ottenere le informazioni dell'utente, come nome ed e-mail. Se queste informazioni vengono recuperate correttamente, vengono salvate nella sessione dell'utente per mantenerlo autenticato. Infine, l'utente viene reindirizzato alla pagina del profilo.
+    Gestione dell’autenticazione con Google:
+    Una volta che l'utente viene reindirizzato da Google alla mia applicazione, il parametro code viene passato come parte dell'URL. Questo parametro è essenziale per ottenere un access token, che è una chiave temporanea che consente di accedere ai dati dell'utente.
 
-Se non è presente un parametro code, l'utente viene inviato alla pagina di login di Google per autenticarsi.
+    Con il codice, ho implementato una chiamata API per ottenere l’access token di Google, e successivamente un’altra richiesta per recuperare le informazioni dell’utente, come nome e indirizzo email. Queste informazioni vengono quindi salvate nella sessione per mantenerne l’autenticazione durante la navigazione.
 
-Se l'utente è autorizzato ad accedere atterrerà sulla pagina profile.php con i suoi dati
+    Redirect e visualizzazione del profilo:
+    Se l'utente è correttamente autenticato, viene reindirizzato alla pagina profile.php, dove vengono mostrati i suoi dati recuperati da Google. Se il parametro code non è presente, l’utente viene inviato direttamente alla pagina di login di Google per avviare il processo di autenticazione.
 
+Funzionamento dell'App
 
+    Se l'utente è già autenticato, accede direttamente alla pagina profile.php.
+    Se l’utente non è ancora autenticato, viene reindirizzato alla pagina di login di Google per iniziare il processo di autenticazione.
+    Una volta completata l'autenticazione, l’utente viene riportato nella mia applicazione e visualizza i propri dati provenienti da Google.
 
+Prova il login online
+Se vuoi vedere il sistema di autenticazione in azione, prova a fare il login con Google direttamente sulla pagina online del progetto:
+Login con Google
 
-prova il login online
-http://tommasogalistu-login-g.free.nf/index.php
+Con questa implementazione, ho imparato a integrare efficacemente l'autenticazione OAuth di Google in un'applicazione web, usando una combinazione di PHP, Google APIs, e gestione avanzata delle sessioni utente.
