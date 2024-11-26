@@ -42,7 +42,11 @@ if (isset($response['access_token']) && !empty($response['access_token'])) {
         $_SESSION['google_loggedin'] = TRUE;
         $_SESSION['google_email'] = $profile['email'];
         $_SESSION['google_name'] = implode(' ', $google_name_parts);
-        $_SESSION['google_picture'] = isset($profile['picture']) ? $profile['picture'] : '';    } else {
+        $_SESSION['google_picture'] = isset($profile['picture']) ? $profile['picture'] : ''; 
+        // Redirect to profile page
+        header('Location: profile.php');
+        exit;   
+    } else {
                 exit('Could not retrieve profile information! Please try again later!');
     }
 } else {
