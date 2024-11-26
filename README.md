@@ -5,7 +5,13 @@ Ho creato lo scafolding del progetto.
 Ho creato e compilato i dati richiesti da google Api Console
 https://console.developers.google.com/
 
-Alla fine della creazione della web application ho preso il client id e 
+Alla fine della creazione della web application ho preso il client id e ho creato il file env con queste variabili
+<?php
+
+$google_oauth_client_id = 'codice';
+$google_oauth_client_secret = 'codice';
+$google_oauth_redirect_uri = 'path/google-oauth.php';
+$google_oauth_version = 'v3';
 
 Su VsCode ho creato la struttura del progetto con i vari style
 
@@ -17,3 +23,7 @@ Dopo aver ricevuto il token, il codice invia un'altra richiesta per ottenere le 
 
 Se non è presente un parametro code, l'utente viene inviato alla pagina di login di Google per autenticarsi.
 
+Se l'utente è autorizzato ad accedere atterrerà sulla pagina profile.php con i suoi dati
+
+prova il login online
+http://tommasogalistu-login-g.free.nf/index.php
