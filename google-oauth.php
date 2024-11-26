@@ -37,8 +37,13 @@ if (isset($response['access_token']) && !empty($response['access_token'])) {
         $google_name_parts = [];
         $google_name_parts[] = isset($profile['given_name']) ? preg_replace('/[^a-zA-Z0-9]/s', '', $profile['given_name']) : '';
         $google_name_parts[] = isset($profile['family_name']) ? preg_replace('/[^a-zA-Z0-9]/s', '', $profile['family_name']) : '';
-    } else {
-        exit('Could not retrieve profile information! Please try again later!');
+        // Authenticate the user
+        session_regenerate_id();
+        $_SESSION['google_loggedin'] = TRUE;
+        $_SESSION['google_email'] = $profile['email'];
+        $_SESSION['google_name'] = implode(' ', $google_name_parts);
+        $_SESSION['google_picture'] = isset($profile['picture']) ? $profile['picture'] : '';    } else {
+                exit('Could not retrieve profile information! Please try again later!');
     }
 } else {
     exit('Invalid access token! Please try again later!');
