@@ -38,6 +38,7 @@ Funzionamento dell'App
 
 Prova il login online
 Se vuoi vedere il sistema di autenticazione in azione, prova a fare il login con Google direttamente sulla pagina online del progetto:
-http://tommasogalistu-login-g.free.nf/index.php
+https://tommasogalistu-login-g.free.nf/
+
 
 Con questa implementazione, ho imparato a integrare efficacemente l'autenticazione OAuth di Google in un'applicazione web, usando una combinazione di PHP, Google APIs, e gestione avanzata delle sessioni utente.

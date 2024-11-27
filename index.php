@@ -17,7 +17,7 @@
                 </span>
             </h1>
 
-            <p class="login-txt">Please login using the button below. You'll be redirected to Google.</p>
+            <p class="login-txt">Premi il bottone Login qui sotto per accedere</p>
 
             <a href="google-oauth.php" class="google-login-btn">
                 <span class="icon">
@@ -25,8 +25,12 @@
                 </span>
                 Login with Google
             </a>
+            <p>Login per fini didattici..Nessun dato verrà salvato o utilizzato in alcun modo</p>
 
 		</div>
+        <div>
+            
+        </div>
 
 	</body>
 </html>
